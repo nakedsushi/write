@@ -181,3 +181,20 @@ h1 {
 #copy.v-leave-active {
     transition: none;
 }
+
+@media(max-width: 800px) {
+    #play {
+        font-size: 10em;
+    }
+
+    #main {
+        width: 90%;
+        height: auto;
+    }
+
+    .footer {
+        font-size: 1em;
+        text-align: left;
+        padding: 20px;
+    }
+}
