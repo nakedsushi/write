@@ -136,14 +136,6 @@ select {
     padding-right: 20px;
 }
 
-#play:hover {
-    cursor: pointer;
-}
-
-#copy {
-    cursor: pointer;
-}
-
 .copied {
     text-align: center;
 }
@@ -152,6 +144,10 @@ select {
     font-size: 1.5em;
     text-align: left;
     padding: 20px 100px;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .minutes {

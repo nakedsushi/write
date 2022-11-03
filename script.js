@@ -25,6 +25,8 @@ export default {
 const app = createApp({
     data() {
         return {
+            timeIndex: 0,
+            possibleTimes: [ 15 * 60, 20 * 60, 30 * 60, 5 * 60],
             idleLimitSeconds: 5, //default = 5 seconds
             timeLimit: 900, //default = 15 mins, 900 seconds
             timePassed: 0,
@@ -57,6 +59,10 @@ const app = createApp({
     },
     methods: {
         tickTock() {
+            if (this.goodJobMode) {
+                return;
+            }
+
             this.idleTime += 1;
             this.timePassed += 1;
 
@@ -83,6 +89,11 @@ const app = createApp({
             navigator.clipboard.writeText(this.text);
             this.copied = true;
             clearInterval(this.timerInterval);
+        },
+        cycleTime() {
+            this.timeIndex++;
+            const index = this.timeIndex % this.possibleTimes.length;
+            this.timeLimit = this.possibleTimes[index]
         },
         resetIdle() {
             this.showInput = true;
