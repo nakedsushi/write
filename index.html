@@ -7,18 +7,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="container">
-    <div id="header" v-if="writeMode">
-        {{ prettyTimeLeft }}
+<template id="container">
+    <div class="header" v-if="writeMode">
+        <div v-if="!goodJobMode">{{ prettyTimeLeft }}</div>
+        <Transition>
+            <div class="copied" v-show="goodJobMode && !copied" id="copy" @click="copyToClipboard">copy to clipboard</div>
+        </Transition>
+        <Transition>
+            <div class="copied" v-show="copied">copied</div>
+        </Transition>
     </div>
     <div id="main">
         <div id="play" v-if="!writeMode" @click="activateWriteMode">&#9658;</div>
-        <textarea id="input" v-if="writeMode"></textarea>
+        <Transition>
+            <textarea id="input" ref="input" @keydown="resetIdle" v-show="showInput"
+                      v-model="text"
+                      placeholder="Type here to begin"></textarea>
+        </Transition>
     </div>
+
     <div class="footer" v-if="!writeMode">
         Press the button to start typing. Don't stop until <span class="minutes">{{timeLimit/60}}</span> minutes has passed or
         else all will be lost. Good luck!
     </div>
-</div>
+</template>
 </body>
 </html>

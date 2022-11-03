@@ -45,13 +45,6 @@ a:not([class]) {
     text-decoration-skip-ink: auto;
 }
 
-/* Make images easier to work with */
-img,
-picture {
-    max-width: 100%;
-    display: block;
-}
-
 /* Inherit fonts for inputs and buttons */
 input,
 button,
@@ -104,12 +97,14 @@ select {
     min-height: 100vh;
 }
 
-#header {
+.header {
     text-align: right;
     width: 100%;
     padding-right: 50px;
     font-size: 1.5em;
     color: #294450;
+    flex-direction: column;
+    height: 50px;
 }
 
 #main {
@@ -144,6 +139,14 @@ select {
     cursor: pointer;
 }
 
+#copy {
+    cursor: pointer;
+}
+
+.copied {
+    text-align: center;
+}
+
 .footer {
     font-size: 1.5em;
     text-align: left;
@@ -157,4 +160,23 @@ select {
 
 .active {
     display: block;
+}
+
+/* Transitions: */
+
+.v-enter-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-leave-active {
+    transition: opacity 5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
+#copy.v-leave-active {
+    transition: none;
 }
