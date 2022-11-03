@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write Now</title>
+    <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="container">
+    <div id="header" v-if="writeMode">
+        {{ prettyTimeLeft }}
+    </div>
+    <div id="main">
+        <div id="play" v-if="!writeMode" @click="activateWriteMode">&#9658;</div>
+        <textarea id="input" v-if="writeMode"></textarea>
+    </div>
+    <div class="footer" v-if="!writeMode">
+        Press the button to start typing. Don't stop until <span class="minutes">{{timeLimit/60}}</span> minutes has passed or
+        else all will be lost. Good luck!
+    </div>
+</div>
+</body>
+</html>
