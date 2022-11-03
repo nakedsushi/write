@@ -133,6 +133,7 @@ select {
     resize: none;
     min-height: 90vh;
     border: none;
+    padding-right: 20px;
 }
 
 #play:hover {
@@ -160,6 +161,10 @@ select {
 
 .active {
     display: block;
+}
+
+h1 {
+    font-variant: small-caps;
 }
 
 /* Transitions: */

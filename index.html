@@ -19,6 +19,7 @@
     </div>
     <div id="main">
         <div id="play" v-if="!writeMode" @click="activateWriteMode">&#9658;</div>
+        <h1 v-if="!writeMode">write now!</h1>
         <Transition>
             <textarea id="input" ref="input" @keydown="resetIdle" v-show="showInput"
                       v-model="text"
@@ -27,8 +28,8 @@
     </div>
 
     <div class="footer" v-if="!writeMode">
-        Press the button to start typing. Don't stop until <span class="minutes">{{timeLimit/60}}</span> minutes has passed or
-        else all will be lost. Good luck!
+        Click the button to start typing. Don't stop until <span class="minutes">{{timeLimit/60}}</span> minutes has passed or
+        else <strong>all</strong> will be lost. Good luck!
     </div>
 </template>
 </body>
