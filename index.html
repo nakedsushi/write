@@ -8,26 +8,28 @@
 </head>
 <body>
 <template id="container">
-    <div class="header" v-if="writeMode">
+    <div class="header" v-show="writeMode">
         <div v-if="!goodJobMode">{{ prettyTimeLeft }}</div>
+        <span class="right pointer" @click="triggerReset">restart</span>
         <Transition>
             <div class="copied pointer" v-show="goodJobMode && !copied" id="copy" @click="copyToClipboard">copy to clipboard</div>
         </Transition>
         <Transition>
-            <div class="copied" v-show="copied">copied</div>
+            <div class="copied" v-show="copied">
+                copied!
+            </div>
         </Transition>
     </div>
     <div id="main">
-        <div class="pointer" id="play" v-if="!writeMode" @click="activateWriteMode">&#9658;</div>
-        <Transition>
+        <div class="pointer" id="play" v-show="!writeMode" @click="activateWriteMode">&#9658;</div>
+        <Transition :css="animateLeave">
             <textarea id="input" ref="input" @keydown="resetIdle" v-show="showInput"
-                      v-model="text"
-                      placeholder="Type here to begin"></textarea>
+                      v-model="text"></textarea>
         </Transition>
     </div>
 
     <div class="footer" v-if="!writeMode">
-        Click the button to start typing. Don't stop until <span @click="cycleTime" v-model="timelLimit" class="minutes pointer">{{timeLimit/60}}</span> minutes have passed or
+        Click the button to start typing. Don't stop until <span @click="cycleTime" v-model="timelLimit" class="highlight minutes pointer">{{timeLimit/60}}</span> minutes have passed or
         else <strong>all</strong> will be lost. Good luck!
     </div>
 </template>

@@ -35,7 +35,8 @@ const app = createApp({
             writeMode: false,
             showInput: false,
             text: null,
-            copied: false
+            copied: false,
+            animateLeave: true
         }
     },
     computed: {
@@ -83,7 +84,10 @@ const app = createApp({
             this.showInput = true;
             this.idleTime = 0;
             this.startCounters();
-            this.$refs.input.focus();
+            this.$nextTick(() => {
+                this.$refs.input.focus();
+            })
+
         },
         copyToClipboard() {
             navigator.clipboard.writeText(this.text);
@@ -96,6 +100,9 @@ const app = createApp({
             this.timeLimit = this.possibleTimes[index]
         },
         resetIdle() {
+            if (!this.animateLeave) {
+                this.animateLeave = true;
+            }
             this.showInput = true;
             this.idleTime = 0;
         },
@@ -104,8 +111,16 @@ const app = createApp({
             if (this.goodJobMode) {
                 return;
             }
+
             this.writeMode = false;
             this.text = null;
+            this.showInput = false;
+            this.copied = false;
+        },
+        triggerReset() {
+            this.goodJobMode = false;
+            this.animateLeave = false;
+            this.resetAll();
         }
     }
 })
