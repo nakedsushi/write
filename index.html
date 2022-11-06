@@ -10,7 +10,7 @@
 <template id="container">
     <div class="header" v-show="writeMode">
         <div v-if="!goodJobMode">{{ prettyTimeLeft }}</div>
-        <span class="right pointer" @click="triggerReset">restart</span>
+        <span class="right pointer" v-show="goodJobMode" @click="triggerReset">restart</span>
         <Transition>
             <div class="copied pointer" v-show="goodJobMode && !copied" id="copy" @click="copyToClipboard">copy to clipboard</div>
         </Transition>
@@ -24,7 +24,8 @@
         <div class="pointer" id="play" v-show="!writeMode" @click="activateWriteMode">&#9658;</div>
         <Transition :css="animateLeave">
             <textarea id="input" ref="input" @keydown="resetIdle" v-show="showInput"
-                      v-model="text"></textarea>
+                      v-model="text"
+                      spellcheck="false"></textarea>
         </Transition>
     </div>
 
