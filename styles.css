@@ -109,7 +109,6 @@ select {
 
 #main {
     flex-direction: column;
-    height: 90vh;
     text-align: center;
     width: 800px;
 }

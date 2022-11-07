@@ -8,8 +8,10 @@
 </head>
 <body>
 <template id="container">
-    <div class="header" v-show="writeMode">
-        <div v-if="!goodJobMode">{{ prettyTimeLeft }}</div>
+    <div class="header">
+        <Transition :css="animateLeave">
+            <div v-if="!goodJobMode" v-show="showInput">{{ prettyTimeLeft }}</div>
+        </Transition>
         <span class="right pointer" v-show="goodJobMode" @click="triggerReset">restart</span>
         <Transition>
             <div class="copied pointer" v-show="goodJobMode && !copied" id="copy" @click="copyToClipboard">copy to clipboard</div>
