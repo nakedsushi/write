@@ -9,10 +9,7 @@
 <body>
 <template id="container">
     <div class="header">
-        <Transition :css="animateLeave">
-            <div v-if="!goodJobMode" v-show="showInput">{{ prettyTimeLeft }}</div>
-        </Transition>
-        <span class="right pointer" v-show="goodJobMode" @click="triggerReset">restart</span>
+        <div v-if="!goodJobMode" v-show="showInput">{{ prettyTimeLeft }}</div>
         <Transition>
             <div class="copied pointer" v-show="goodJobMode && !copied" id="copy" @click="copyToClipboard">copy to clipboard</div>
         </Transition>
@@ -30,10 +27,15 @@
                       spellcheck="false"></textarea>
         </Transition>
     </div>
-
+    <div class="footer">
+        <div class="pointer" v-show="goodJobMode" @click="triggerReset">restart</div>
+    </div>
     <div class="footer" v-if="!writeMode">
         Click the button to start typing. Don't stop until <span @click="cycleTime" v-model="timelLimit" class="highlight minutes pointer">{{timeLimit/60}}</span> minutes have passed or
         else <strong>all</strong> will be lost. Good luck!
+    </div>
+    <div class="links" v-if="!writeMode">
+        <a rel="me" href="https://writing.exchange/@juneyi">juneyi@writing.exchange</a>
     </div>
 </template>
 </body>

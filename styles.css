@@ -118,7 +118,6 @@ select {
 }
 
 #input {
-    height: 50%;
     width: 100%;
     background-color: #182A35;
     color: #476B78;
@@ -130,19 +129,29 @@ select {
     -moz-box-shadow: none;
     box-shadow: none;
     resize: none;
-    min-height: 90vh;
+    min-height: 85vh;
     border: none;
     padding-right: 20px;
 }
 
 .copied {
-    text-align: center;
+    text-align: right;
 }
 
 .footer {
     font-size: 1.5em;
-    text-align: left;
     padding: 20px 100px;
+}
+
+.links {
+    width: 100%;
+    padding: 20px;
+    text-align: right;
+}
+
+.links a {
+    color: #476B78;
+    text-decoration: none;
 }
 
 .pointer {
@@ -182,10 +191,6 @@ h1 {
 
 #copy.v-leave-active {
     transition: none;
-}
-
-.right {
-    float: right;
 }
 
 @media(max-width: 800px) {
