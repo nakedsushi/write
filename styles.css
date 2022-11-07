@@ -166,6 +166,10 @@ select {
     color: #94C8D7FF;
 }
 
+.restart {
+    color: #294450;
+}
+
 .active {
     display: block;
 }

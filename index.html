@@ -11,7 +11,7 @@
     <div class="header">
         <div v-if="!goodJobMode" v-show="showInput">{{ prettyTimeLeft }}</div>
         <Transition>
-            <div class="copied pointer" v-show="goodJobMode && !copied" id="copy" @click="copyToClipboard">copy to clipboard</div>
+            <div class="copied highlight pointer" v-show="goodJobMode && !copied" id="copy" @click="copyToClipboard">copy to clipboard</div>
         </Transition>
         <Transition>
             <div class="copied" v-show="copied">
@@ -28,7 +28,7 @@
         </Transition>
     </div>
     <div class="footer">
-        <div class="pointer" v-show="goodJobMode" @click="triggerReset">restart</div>
+        <div class="restart pointer" v-show="goodJobMode" @click="triggerReset">restart</div>
     </div>
     <div class="footer" v-if="!writeMode">
         Click the button to start typing. Don't stop until <span @click="cycleTime" v-model="timelLimit" class="highlight minutes pointer">{{timeLimit/60}}</span> minutes have passed or
